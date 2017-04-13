@@ -8,19 +8,103 @@
     tools:context="cn.triplez.materialdesigndemo.NavActivity"
     tools:showIn="@layout/app_bar_nav">
 
+
     <LinearLayout
-        android:layout_width="395dp"
-        android:layout_height="587dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         app:backgroundTint="@color/white"
         android:id="@+id/linearLayout0"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        tools:layout_constraintTop_creator="1"
+        tools:layout_constraintRight_creator="1"
+        tools:layout_constraintBottom_creator="1"
+        android:layout_marginStart="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginEnd="8dp"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginTop="8dp"
+        tools:layout_constraintLeft_creator="1"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="400dp"
             android:id="@+id/linearLayout1"
             android:layout_margin="10dp"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:background="@color/cardview_light_background">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="20dp"
+                android:orientation="horizontal"
+                android:id="@+id/linearLayout10"
+                android:gravity="end"
+                android:layout_gravity="top">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="20dp"
+                    android:gravity="center_vertical"
+                    android:text="@string/singal_strength"
+                    android:layout_gravity="top|start"
+                    android:textSize="14sp"/>
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="120dp"
+                android:orientation="horizontal"
+                android:id="@+id/linearLayout11">
+                <!--Just fill the blanks-->
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:id="@+id/linearLayout12"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="20dp"
+                    android:id="@+id/pm_text"
+                    android:text="@string/main_pm_text"
+                    android:textAlignment="center"
+                    android:textSize="16sp"
+                    android:gravity="bottom"
+                    android:layout_gravity="center"/>
+
+                <TextView
+                    android:id="@+id/pm_number"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:gravity="top"
+                    android:text="@string/main_pm_number"
+                    android:textAlignment="center"
+                    android:textAllCaps="false"
+                    android:textColor="@color/cardview_dark_background"
+                    android:textSize="100sp" />
+
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:gravity="top"
+                    android:id="@+id/pm_location"
+                    android:textAlignment="center"
+                    android:text="@string/main_location"/>
+
+            </LinearLayout>
+
 
         </LinearLayout>
 
@@ -29,9 +113,18 @@
             android:layout_height="match_parent"
             android:layout_margin="10dp"
             android:orientation="vertical"
-            android:id="@+id/linearLayout2">
+            android:id="@+id/linearLayout2"
+            android:background="@color/cardview_dark_background">
 
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="10dp"
+                android:id="@+id/tips"
+                />
         </LinearLayout>
+
     </LinearLayout>
+
 
 </android.support.constraint.ConstraintLayout>

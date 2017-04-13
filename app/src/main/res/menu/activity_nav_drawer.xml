@@ -4,11 +4,23 @@
     <group android:checkableBehavior="single">
        <item
            android:id="@+id/nav_current"
+           android:icon="@drawable/ic_menu_send"
            android:title="@string/navigation_current"/>
         <item
             android:id="@+id/nav_graph"
+            android:icon="@drawable/ic_menu_slideshow"
             android:title="@string/navigation_graph"/>
 
     </group>
+
+    <item
+        android:title="@string/navigation_dev">
+        <menu>
+            <item
+                android:title="@string/navigation_log"
+                android:icon="@drawable/ic_menu_manage"
+                android:id="@+id/nav_log"/>
+        </menu>
+    </item>
 
 </menu>

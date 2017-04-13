@@ -84,6 +84,9 @@ public class NavActivity extends AppCompatActivity
         if(id == R.id.nav_graph){
             intent = new Intent(this, FullscreenActivity.class);
             startActivity(intent);
+        } else if(id == R.id.nav_log){
+            intent = new Intent(this, LogActivity.class);
+            startActivity(intent);
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
