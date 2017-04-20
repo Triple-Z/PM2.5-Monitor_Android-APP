@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">PM2.5 监测器</string>
+    <string name="bluetooth_not_avi">蓝牙不可用！</string>
+    <string name="connect_lost">链接断开</string>
+    <string name="dummy_button">返回</string>
+    <string name="dummy_content"></string>
+</resources>

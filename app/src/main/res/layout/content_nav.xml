@@ -12,7 +12,6 @@
     <LinearLayout
         android:layout_width="0dp"
         android:layout_height="0dp"
-        app:backgroundTint="@color/white"
         android:id="@+id/linearLayout0"
         android:orientation="vertical"
         tools:layout_constraintTop_creator="1"
@@ -29,14 +28,14 @@
         app:layout_constraintTop_toTopOf="parent">
 
 
-
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="400dp"
             android:id="@+id/linearLayout1"
             android:layout_margin="10dp"
             android:orientation="vertical"
-            android:background="@color/cardview_light_background">
+            android:background="@color/cardview_light_background"
+            >
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -48,17 +47,19 @@
 
                 <TextView
                     android:layout_width="wrap_content"
+                    android:id="@+id/bt_strength"
                     android:layout_height="20dp"
                     android:gravity="center_vertical"
-                    android:text="@string/singal_strength"
+                    android:text=" "
                     android:layout_gravity="top|start"
                     android:textSize="14sp"/>
+
             </LinearLayout>
 
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="120dp"
+                android:layout_height="100dp"
                 android:orientation="horizontal"
                 android:id="@+id/linearLayout11">
                 <!--Just fill the blanks-->
@@ -93,28 +94,48 @@
                     android:textColor="@color/cardview_dark_background"
                     android:textSize="100sp" />
 
-
-                <TextView
-                    android:layout_width="match_parent"
+                <LinearLayout
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:gravity="top"
-                    android:id="@+id/pm_location"
-                    android:textAlignment="center"
-                    android:text="@string/main_location"/>
+                    android:orientation="vertical"
+                    android:layout_gravity="center">
+                    <ToggleButton
+                        android:id="@+id/pm_device"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:background="#ffffff"
+                        android:bufferType="normal"
+                        android:checked="false"
+                        android:gravity="center"
+                        android:padding="10dp"
+                        android:shadowColor="#000000"
+                        android:textAlignment="center"
+                        android:textColorLink="#00E676" />
+
+                    <ProgressBar
+                        android:id="@+id/pb"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:indeterminate="true"
+                        android:padding="10dp" />
+
+
+                </LinearLayout>
 
             </LinearLayout>
 
 
         </LinearLayout>
 
-        <LinearLayout
+        <android.support.v7.widget.CardView
+            app:cardBackgroundColor="@color/cardview_dark_background"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_margin="10dp"
             android:orientation="vertical"
-            android:id="@+id/linearLayout2"
-            android:background="@color/cardview_dark_background">
+            android:id="@+id/linearLayout2">
 
             <TextView
                 android:layout_width="match_parent"
@@ -122,7 +143,7 @@
                 android:layout_margin="10dp"
                 android:id="@+id/tips"
                 />
-        </LinearLayout>
+        </android.support.v7.widget.CardView>
 
     </LinearLayout>
 
