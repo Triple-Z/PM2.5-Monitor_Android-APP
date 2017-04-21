@@ -48,6 +48,7 @@ public class NavActivity extends AppCompatActivity
     String s = "";
     int pm_val;
     boolean doubleBackToExitPressedOnce = false;
+    TextView level, implication, tips;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,6 +60,9 @@ public class NavActivity extends AppCompatActivity
         pm_device = (ToggleButton) findViewById(R.id.pm_device);
         bt_strength = (TextView) findViewById(R.id.bt_strength);
         pb = (ProgressBar)findViewById(R.id.pb);
+        level = (TextView) findViewById(R.id.level);
+        implication = (TextView) findViewById(R.id.implication);
+        tips = (TextView) findViewById(R.id.tips);
 
         // Progress Bar invisble.
         pb.setVisibility(View.INVISIBLE);
@@ -218,23 +222,44 @@ public class NavActivity extends AppCompatActivity
                 if(!s.equals("")){
                     pb.setVisibility(View.INVISIBLE);
                     // Different color;
-                    pm_val = Integer.parseInt(s);
-
+                    try {
+                        pm_val = Integer.parseInt(s);
+                    } catch (Exception e){
+                        Log.d("BT-Convert-Integer", "Convert Error!");
+                    }
                     SpannableString content = new SpannableString(s);
                     content.setSpan(new UnderlineSpan(), 0, content.length(), 0);
                     pm_number.setText(content);
-                    if(pm_val >= 0 && pm_val <= 50){// Good;
+                    if(pm_val >= 0 && pm_val <= 12){// Good;
                         pm_number.setTextColor(Color.parseColor("#388E3C"));
-                    }else if (pm_val >= 51 && pm_val <= 100){// Moderate;
+                        level.setText(R.string.good);
+                        implication.setText(R.string.good_i);
+                        tips.setText(R.string.good_t);
+                    }else if (pm_val >= 13 && pm_val <= 35){// Moderate;
                         pm_number.setTextColor(Color.parseColor("#FBC02D"));
-                    }else if (pm_val >= 101 && pm_val <= 150){// Unhealthy for Sensitive Groups;
+                        level.setText(R.string.moderate);
+                        implication.setText(R.string.moderate_i);
+                        tips.setText(R.string.moderate_t);
+                    }else if (pm_val >= 36 && pm_val <= 55){// Unhealthy for Sensitive Groups;
                         pm_number.setTextColor(Color.parseColor("#F57C00"));
-                    }else if (pm_val >= 151 && pm_val <= 200){// Unhealthy;
+                        level.setText(R.string.unhealthy_s);
+                        implication.setText(R.string.unhealthy_s_i);
+                        tips.setText(R.string.unhealthy_s_t);
+                    }else if (pm_val >= 56 && pm_val <= 150){// Unhealthy;
                         pm_number.setTextColor(Color.parseColor("#7B1FA2"));
-                    }else if (pm_val >= 201 && pm_val <= 300){// Very Unhealthy;
+                        level.setText(R.string.unhealthy);
+                        implication.setText(R.string.unhealthy_i);
+                        tips.setText(R.string.unhealthy_t);
+                    }else if (pm_val >= 151 && pm_val <=250 ){// Very Unhealthy;
                         pm_number.setTextColor(Color.parseColor("#9C27B0"));
+                        level.setText(R.string.v_unhealthy);
+                        implication.setText(R.string.v_healthy_i);
+                        tips.setText(R.string.v_healthy_t);
                     }else{// Hazardous;
                         pm_number.setTextColor(Color.parseColor("#5D4037"));
+                        level.setText(R.string.hazardous);
+                        implication.setText(R.string.hazardous_i);
+                        tips.setText(R.string.hazardous_t);
                     }
                     // TODO: Broadcast string s;
                     Intent i = new Intent("value");

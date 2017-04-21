@@ -168,7 +168,11 @@ public class FullscreenActivity extends AppCompatActivity {
         @Override
         public void onReceive(Context context, Intent intent) {
             val = intent.getStringExtra("value");
-            val_int = Integer.parseInt(val);
+            try {
+                val_int = Integer.parseInt(val);
+            } catch (Exception e){
+                Log.d("BT-Convert-Integer", "Convert Error!");
+            }
             Log.d("BT-Value", "value = " + val_int);
 //            mTimer = new Runnable() {
 //                @Override
@@ -219,7 +223,7 @@ public class FullscreenActivity extends AppCompatActivity {
             public void run() {
                 graphLastXValue += 1d;
                 mSeries.appendData(new DataPoint(graphLastXValue, val_int), true, 30);
-                mHandler.postDelayed(this, 1000);
+                mHandler.postDelayed(this, 2000);
 //                mHandler.post(this);
             }
         };
