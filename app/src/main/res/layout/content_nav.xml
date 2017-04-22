@@ -30,7 +30,7 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="300dp"
+            android:layout_height="wrap_content"
             android:id="@+id/linearLayout1"
             android:layout_margin="10dp"
             android:orientation="vertical"
@@ -57,12 +57,12 @@
             </LinearLayout>
 
 
-            <!--<LinearLayout-->
-                <!--android:layout_width="match_parent"-->
-                <!--android:layout_height="50dp"-->
-                <!--android:orientation="horizontal"-->
-                <!--android:id="@+id/linearLayout11">-->
-            <!--</LinearLayout>-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:orientation="horizontal"
+                android:id="@+id/linearLayout11">
+            </LinearLayout>
                 <!--Just fill the blanks-->
 
             <LinearLayout
@@ -99,6 +99,7 @@
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
                     android:layout_gravity="center">
+
                     <ToggleButton
                         android:id="@+id/pm_device"
                         android:layout_width="wrap_content"
@@ -115,10 +116,10 @@
 
                     <ProgressBar
                         android:id="@+id/pb"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
                         android:indeterminate="true"
+                        android:layout_gravity="center"
                         android:padding="10dp" />
 
 
@@ -137,6 +138,7 @@
             android:id="@+id/linearLayout2">
 
             <ScrollView
+                android:id="@+id/messg"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
 

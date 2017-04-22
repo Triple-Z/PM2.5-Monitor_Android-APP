@@ -1,5 +1,6 @@
 package cn.triplez.materialdesigndemo;
 
+import android.annotation.TargetApi;
 import android.app.Activity;
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
@@ -26,6 +27,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ProgressBar;
+import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.ToggleButton;
@@ -40,15 +42,19 @@ public class NavActivity extends AppCompatActivity
     BluetoothSPP bt;
     ToggleButton pm_device;
     TextView bt_strength, pm_number;
+    TextView level, implication, tips;
+    ProgressBar pb;
+    ScrollView messg;
+
     private Thread thread;
     private Handler handler;
-    ProgressBar pb;
+
+    boolean doubleBackToExitPressedOnce = false;
     byte number = 0;
     int counter = 0;
-    String s = "";
     int pm_val;
-    boolean doubleBackToExitPressedOnce = false;
-    TextView level, implication, tips;
+    String s = "";
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,6 +62,7 @@ public class NavActivity extends AppCompatActivity
         setContentView(R.layout.activity_nav);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        messg = (ScrollView) findViewById(R.id.messg);
         pm_number = (TextView)findViewById(R.id.pm_number);
         pm_device = (ToggleButton) findViewById(R.id.pm_device);
         bt_strength = (TextView) findViewById(R.id.bt_strength);
@@ -63,15 +70,25 @@ public class NavActivity extends AppCompatActivity
         level = (TextView) findViewById(R.id.level);
         implication = (TextView) findViewById(R.id.implication);
         tips = (TextView) findViewById(R.id.tips);
+        final FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
 
         // Progress Bar invisble.
         pb.setVisibility(View.INVISIBLE);
         // Registering Broadcast. this will fire when Bluetooth device Found
         registerReceiver(receiver, new IntentFilter(BluetoothDevice.ACTION_ACL_CONNECTED));
 
+//        messg.setOnScrollChangeListener(new View.OnScrollChangeListener() {
+//            @Override
+//            public void onScrollChange(View v, int scrollX, int scrollY, int oldScrollX, int oldScrollY) {
+//                if (scrollY > oldScrollY) {
+//                    fab.hide();
+//                } else {
+//                    fab.show();
+//                }
+//            }
+//        });
 
         // Floating action button
-        final FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -80,6 +97,7 @@ public class NavActivity extends AppCompatActivity
                 testSend();
             }
         });
+        fab.hide();
 
         // Drawer action
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -93,8 +111,6 @@ public class NavActivity extends AppCompatActivity
 
         // Bluetooth
         bt = new BluetoothSPP(this);
-        Intent intent;
-
         // Init Bluetooth.
         if(!bt.isBluetoothAvailable()){
             Log.d("BT", "BT is not available!");
@@ -139,6 +155,7 @@ public class NavActivity extends AppCompatActivity
                     pm_device.setChecked(true);
                     pm_device.setText(R.string.main_location);
                     pb.setVisibility(View.INVISIBLE);
+                    fab.show();
 
                 } else if(state == BluetoothState.STATE_CONNECTING) {
                     // Do something while connecting
@@ -230,6 +247,7 @@ public class NavActivity extends AppCompatActivity
                     SpannableString content = new SpannableString(s);
                     content.setSpan(new UnderlineSpan(), 0, content.length(), 0);
                     pm_number.setText(content);
+                    fab.hide();
                     if(pm_val >= 0 && pm_val <= 12){// Good;
                         pm_number.setTextColor(Color.parseColor("#388E3C"));
                         level.setText(R.string.good);
